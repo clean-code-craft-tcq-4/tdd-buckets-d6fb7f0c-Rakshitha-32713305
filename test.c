@@ -8,7 +8,7 @@ int *chkrange;
 int array[] = {3, 3, 5, 4, 10, 11, 12};
 int arraysize = sizeof(array) / sizeof(array[0]);
   
-chkrange = detect_PrintRange(array,arraysize);
+chkrange = PrintRange(array,arraysize);
 
 assert(*(chkrange+4) == 3);
 assert(*(chkrange+5) == 5);
