@@ -1,32 +1,31 @@
 #include "CurrentRange.h"
 
-static int Rangeinfo[100][4];
+static int Rangeinfo[20][4];
 
 int cmpfunc (const void * value1, const void * value2) 
 {
    return ( *(int*)value1 - *(int*)value2 );
 }
 
-int isConsecutive(int diff)
+int isConsecutive(int difference)
 {
    int consecutive = 0;
-   if((diff==0) || (diff)==1)
+   if((difference==0) || (difference)==1)
      consecutive=1;
    return consecutive;
 }
 
-void printRangeDetails(int startvalue,int endvalue,int consecutivecount)
-{
-   printf("\nRange,Readings\n");
-   printf("%d - %d,  %d",startvalue,endvalue,consecutivecount+1);
-}
+
+ 
+
 
 int calculateRangeCount(int consecutivecount,int rangecount,int startvalue,int endvalue)
 {
    if(consecutivecount!=0)
      {
         rangecount++;
-        printRangeDetails(startvalue,endvalue,consecutivecount);
+        printf("\nRange,Readings\n");
+        printf("%d - %d,  %d",startvalue,endvalue,consecutivecount+1);
         Rangeinfo[rangecount][0] = startvalue;
         Rangeinfo[rangecount][1] = endvalue;
         Rangeinfo[rangecount][2] = consecutivecount+1;
@@ -64,6 +63,9 @@ int * detectAndPrintRangeDetails(int currentsamplesarray[],int arraysize)
      }
   }
   Rangeinfo[rangecount][3] = rangecount;
-  printNoRangeFound(Rangeinfo[rangecount][3]);
+  if(rangecount==0)
+  {
+   printf("\nNo Continuous Range detected");
+  }
   return &Rangeinfo[0][0];
 }
