@@ -1,4 +1,4 @@
-#include "CurrenttRange.h"
+#include "CurrentRange.h"
 #include <assert.h>
 
 int main()
