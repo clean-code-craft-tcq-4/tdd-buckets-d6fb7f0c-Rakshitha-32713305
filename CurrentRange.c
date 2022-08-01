@@ -16,7 +16,7 @@ int calcRangeCnt(int consecutivecnt,int rangecnt,int start,int end)
         printf("%d - %d, %d",start,end,consecutivecnt+1);
         RangeValue[rangecnt][0] = start;
         RangeValue[rangecnt][1] = end;
-        RangeValue[rangecnt][2] = consecutivecount+1;
+        RangeValue[rangecnt][2] = consecutivecnt+1;
       }
    return rangecnt;
 }
@@ -37,16 +37,15 @@ int * detect_PrintRange(int array[],int arraysize)
    int start=array[0];
    int end=array[0];
    int index = 0;
-   int diff = 10;
-   int consecutiveflag=0;
+   int diff = 10;  
   
   qsort(array, arraysize, sizeof(int), cmpfunc);
  
   for( index = 0 ; index < arraysize; index++ ) 
      {   
        diff = array[index+1] - array[index];        
-       consecutiveflag = isConsecutive(diff);
-         if(isconsecutive==1)
+        
+         if(isConsecutive(diff)==1)
         {
            consecutivecount++;
            end = array[index+1];
@@ -54,8 +53,8 @@ int * detect_PrintRange(int array[],int arraysize)
         else 
         {
            rangecount = calcRangeCnt(consecutivecount,rangecount,start,end);
-           start = samplesarray[index+1];
-           end = samplesarray[index];
+           start = array[index+1];
+           end = array[index];
            consecutivecount=0;
         }
      }
