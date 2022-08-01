@@ -1,10 +1,24 @@
 #include "CurrentRange.h"
 
-static int Rangeinfo[20][4];
+static int RangeValue[20][4];
 
 int cmpfunc (const void * value1, const void * value2) 
 {
    return ( *(int*)value1 - *(int*)value2 );
+}
+
+int calcRangeCnt(int consecutivecnt,int rangecnt,int start,int end)
+{
+   if(consecutivecnt!=0)
+     {
+        rangecnt++;
+        printf("Range,Readings\n");
+        printf("%d - %d, %d",start,end,consecutivecnt+1);
+        RangeValue[rangecnt][0] = start;
+        RangeValue[rangecnt][1] = end;
+        RangeValue[rangecnt][2] = consecutivecount+1;
+      }
+   return rangecnt;
 }
 
 int isConsecutive(int difference)
@@ -14,58 +28,38 @@ int isConsecutive(int difference)
      consecutive=1;
    return consecutive;
 }
-
-
+               
+   
+int * detect_PrintRange(int array[],int arraysize)
+{ 
+   int rangecount=0;
+   int consecutivecount=0;
+   int start=array[0];
+   int end=array[0];
+   int index = 0;
+   int diff = 10;
+   int consecutiveflag=0;
+  
+  qsort(array, arraysize, sizeof(int), cmpfunc);
  
-
-
-int calculateRangeCount(int consecutivecount,int rangecount,int startvalue,int endvalue)
-{
-   if(consecutivecount!=0)
-     {
-        rangecount++;
-        printf("\nRange,Readings\n");
-        printf("%d - %d,  %d",startvalue,endvalue,consecutivecount+1);
-        Rangeinfo[rangecount][0] = startvalue;
-        Rangeinfo[rangecount][1] = endvalue;
-        Rangeinfo[rangecount][2] = consecutivecount+1;
-      }
-   return rangecount;
-  }
-
-void printNoRangeFound(int rangecount)
-{
-   if(rangecount==0)
-   printf("\nNo Continuous Range detected");
-}
-                
-
-int * detectAndPrintRangeDetails(int currentsamplesarray[],int arraysize)
-{
-  qsort(currentsamplesarray, arraysize, sizeof(int), cmpfunc);
-  int rangecount=0,consecutivecount=0,startvalue=currentsamplesarray[0],endvalue=currentsamplesarray[0],index = 0;
   for( index = 0 ; index < arraysize; index++ ) 
-  {   
-      int diff = currentsamplesarray[index+1] - currentsamplesarray[index];
-      int isconsecutive=0;
-      isconsecutive = isConsecutive(diff);
-      if(isconsecutive==1)
-     {
-        consecutivecount++;
-        endvalue = currentsamplesarray[index+1];
+     {   
+       diff = array[index+1] - array[index];        
+       consecutiveflag = isConsecutive(diff);
+         if(isconsecutive==1)
+        {
+           consecutivecount++;
+           end = array[index+1];
+        }
+        else 
+        {
+           rangecount = calcRangeCnt(consecutivecount,rangecount,start,end);
+           start = samplesarray[index+1];
+           end = samplesarray[index];
+           consecutivecount=0;
+        }
      }
-     else 
-     {
-        rangecount = calculateRangeCount(consecutivecount,rangecount,startvalue,endvalue);
-        startvalue = currentsamplesarray[index+1];
-        endvalue = currentsamplesarray[index];
-        consecutivecount=0;
-     }
-  }
-  Rangeinfo[rangecount][3] = rangecount;
-  if(rangecount==0)
-  {
-   printf("\nNo Continuous Range detected");
-  }
-  return &Rangeinfo[0][0];
+  RangeValue[rangecount][3] = rangecount;  
+
+  return &RangeValue[0][0];
 }
