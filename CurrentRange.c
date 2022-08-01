@@ -30,7 +30,7 @@ int isConsecutive(int difference)
 }
                
    
-int * detect_PrintRange(int array[],int arraysize)
+int * PrintRange(int array[],int arraysize)
 { 
    int rangecount=0;
    int consecutivecount=0;
