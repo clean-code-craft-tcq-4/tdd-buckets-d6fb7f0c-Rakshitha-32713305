@@ -43,8 +43,7 @@ int * PrintRange(int array[],int arraysize)
  
   for( index = 0 ; index < arraysize; index++ ) 
      {  
-        if((index+1) < arraysize)
-        {
+       
           diff = array[index+1] - array[index];        
 
             if(isConsecutive(diff)==1)
@@ -59,7 +58,7 @@ int * PrintRange(int array[],int arraysize)
               end = array[index];
               consecutivecount=0;
            }
-        }
+       
      }
   RangeValue[rangecount][3] = rangecount;  
 
