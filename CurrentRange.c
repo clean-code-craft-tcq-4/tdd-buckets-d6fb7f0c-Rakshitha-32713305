@@ -42,20 +42,23 @@ int * PrintRange(int array[],int arraysize)
   qsort(array, arraysize, sizeof(int), cmpfunc);
  
   for( index = 0 ; index < arraysize; index++ ) 
-     {   
-       diff = array[index+1] - array[index];        
-        
-         if(isConsecutive(diff)==1)
+     {  
+        if((index+1) < arraysize)
         {
-           consecutivecount++;
-           end = array[index+1];
-        }
-        else 
-        {
-           rangecount = calcRangeCnt(consecutivecount,rangecount,start,end);
-           start = array[index+1];
-           end = array[index];
-           consecutivecount=0;
+          diff = array[index+1] - array[index];        
+
+            if(isConsecutive(diff)==1)
+           {
+              consecutivecount++;
+              end = array[index+1];
+           }
+           else 
+           {
+              rangecount = calcRangeCnt(consecutivecount,rangecount,start,end);
+              start = array[index+1];
+              end = array[index];
+              consecutivecount=0;
+           }
         }
      }
   RangeValue[rangecount][3] = rangecount;  
