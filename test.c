@@ -5,11 +5,14 @@
 int main()
 {
 int *chkrange; 
+int samplesarray[];
+ int arraysize;
 int *ptr; 
+ 
  //Test case for current value range check
 printf("\n\nCurrentRange:Test case 1");
-int samplesarray[] = {3, 3, 5, 4, 10, 11, 12};
-int arraysize = sizeof(samplesarray) / sizeof(samplesarray[0]);
+samplesarray[] = {3, 3, 5, 4, 10, 11, 12};
+arraysize = sizeof(samplesarray) / sizeof(samplesarray[0]);
 chkrange = PrintRange(samplesarray,arraysize);
 //Test case to check start of range
 assert(*(chkrange+4) == 3);
@@ -24,15 +27,15 @@ assert(*(chkrange+10) == 3);
 assert(*(chkrange+11) == 2);  
   
 printf("\n\nCurrentRange:Test case 2");
-int samplesarray[] = {3, 30, 5, 7, 10, 15, 12, 20};
-int arraysize = sizeof(samplesarray) / sizeof(samplesarray[0]);
+ samplesarray[] = {3, 30, 5, 7, 10, 15, 12, 20};
+ arraysize = sizeof(samplesarray) / sizeof(samplesarray[0]);
 chkrange = PrintRange(samplesarray,arraysize);
 //Test case to check number of range detected
 assert(*(chkrange+3) == 0); 
   
 printf("\n\nCurrentRange:Test case 3");
-int samplesarray[] = {-3, -30, -5, -7, -10, -11, -12, 20, -6};
-int arraysize = sizeof(samplesarray) / sizeof(samplesarray[0]);
+ samplesarray[] = {-3, -30, -5, -7, -10, -11, -12, 20, -6};
+ arraysize = sizeof(samplesarray) / sizeof(samplesarray[0]);
 chkrange = PrintRange(samplesarray,arraysize); 
 //Test case to check start of range
 assert(*(chkrange+4) == -12);
@@ -48,8 +51,8 @@ assert(*(chkrange+11) == 2);
 
   
 printf("\n\nCurrentRange:Test case 4");
-int samplesarray[] = {-2,-1,0,1,2,3,4,5};
-int arraysize = sizeof(samplesarray) / sizeof(samplesarray[0]);
+ samplesarray[] = {-2,-1,0,1,2,3,4,5};
+ arraysize = sizeof(samplesarray) / sizeof(samplesarray[0]);
 chkrange = PrintRange(samplesarray,arraysize);
 //Test case to check start of range
 assert(*(chkrange+4) == -2);
@@ -61,8 +64,8 @@ assert(*(chkrange+6) == 8);
 assert(*(chkrange+7) == 1);  
   
 printf("\n\nCurrentRange:Test case 5");
-int samplesarray[] = {};
-int arraysize5 = sizeof(samplesarray) / sizeof(samplesarray[0]);
+ samplesarray[] = {};
+ arraysize5 = sizeof(samplesarray) / sizeof(samplesarray[0]);
 chkrange = PrintRange(samplesarray,arraysize);
 //Test case to check number of range detected
 assert(*(chkrange+3) == 0); 
@@ -86,9 +89,9 @@ assert(*(ptr+3) == 0);
   
 
 printf("\n\nA2D:Test case 2");
-int A2Dvaluearray[] = {1146,4094};
-int A2Darraysize = sizeof(A2Dvaluearray) / sizeof(A2Dvaluearray[0]);  
-int Amperearray[] = {};
+ A2Dvaluearray[] = {1146,4094};
+ A2Darraysize = sizeof(A2Dvaluearray) / sizeof(A2Dvaluearray[0]);  
+ Amperearray[] = {};
 convertA2DToAmpereRange(A2Dvaluearray,A2Darraysize,Amperearray,10,12);
 ptr = detectAndPrintRangeDetails(Amperearray,A2Darraysize);
 //Test case to check number of range detected
@@ -96,9 +99,9 @@ assert(*(ptr+3) == 0);
   
 
 printf("\n\nA2D:Test case 3");
-int A2Dvaluearray[] = {1146,1600,4094};
-int A2Darraysize = sizeof(A2Dvaluearray) / sizeof(A2Dvaluearray[0]);  
-int Amperearray[] = {};
+ A2Dvaluearray[] = {1146,1600,4094};
+ A2Darraysize = sizeof(A2Dvaluearray) / sizeof(A2Dvaluearray[0]);  
+ Amperearray[] = {};
 convertA2DToAmpereRange(A2Dvaluearray,A2Darraysize,Amperearray,10,12);
 ptr = detectAndPrintRangeDetails(Amperearray,A2Darraysize);
 //Test case to check start of range
@@ -112,9 +115,9 @@ assert(*(ptr+7) == 1);
   
 
 printf("\n\nA2D:Test case 4");
-int A2Dvaluearray[] = {-1000,-1146,-4094};
-int A2Darraysize = sizeof(A2Dvaluearray) / sizeof(A2Dvaluearray[0]);  
-int Amperearray[] = {};
+ A2Dvaluearray[] = {-1000,-1146,-4094};
+ A2Darraysize = sizeof(A2Dvaluearray) / sizeof(A2Dvaluearray[0]);  
+ Amperearray[] = {};
 convertA2DToAmpereRange(A2Dvaluearray,A2Darraysize,Amperearray,10,12);
 ptr = detectAndPrintRangeDetails(Amperearray,A2Darraysize);
 //Test case to check start of range
