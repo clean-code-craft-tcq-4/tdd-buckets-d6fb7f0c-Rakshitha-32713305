@@ -80,7 +80,7 @@ int A2Dvaluearray[] = {1146,4094};
 int A2Darraysize = sizeof(A2Dvaluearray) / sizeof(A2Dvaluearray[0]);  
 int Amperearray[] = {};
 convertA2DToAmpereRange(A2Dvaluearray,A2Darraysize,Amperearray,10,12);
-ptr = detectAndPrintRangeDetails(Amperearray,A2Darraysize);
+ptr = PrintRange(Amperearray,A2Darraysize);
 //Test case to check number of range detected
 assert(*(ptr+3) == 0);   
   
@@ -90,7 +90,7 @@ int A2Dvaluearray1[] = {1146,1600,4094};
 int A2Darraysize1 = sizeof(A2Dvaluearray1) / sizeof(A2Dvaluearray1[0]);  
 int Amperearray1[] = {};
 convertA2DToAmpereRange(A2Dvaluearray1,A2Darraysize1,Amperearray1,10,12);
-ptr = detectAndPrintRangeDetails(Amperearray1,A2Darraysize1);
+ptr = PrintRange(Amperearray1,A2Darraysize1);
 //Test case to check start of range
 assert(*(ptr+4) == 3);
 //Test case to check end of range
@@ -106,7 +106,7 @@ int A2Dvaluearray2[] = {-1000,-1146,-4094};
 int A2Darraysize2 = sizeof(A2Dvaluearray2) / sizeof(A2Dvaluearray2[0]);  
 int Amperearray2[] = {};
 convertA2DToAmpereRange(A2Dvaluearray2,A2Darraysize2,Amperearray2,10,12);
-ptr = detectAndPrintRangeDetails(Amperearray2,A2Darraysize2);
+ptr = PrintRange(Amperearray2,A2Darraysize2);
 //Test case to check start of range
 assert(*(ptr+4) == 2);
 //Test case to check end of range
@@ -121,7 +121,7 @@ int A2Dvaluearray3[] = {4095};
 int A2Darraysize3 = sizeof(A2Dvaluearray3) / sizeof(A2Dvaluearray3[0]);  
 int Amperearray3[] = {};
 convertA2DToAmpereRange(A2Dvaluearray3,A2Darraysize3,Amperearray3,10,12);
-ptr = detectAndPrintRangeDetails(Amperearray3,A2Darraysize3);
+ptr = PrintRange(Amperearray3,A2Darraysize3);
 //Test case to check number of range detected
 assert(*(ptr+3) == 0); 
   
